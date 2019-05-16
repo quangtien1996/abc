@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>zalo</title>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="socket.io/socket.io.js"></script>
+</head>
+<script type="text/javascript">
+	var socket = io("http://app.phanmemninja.com/server/");
+	socket.on("data", function(data){
+		$('#noidung').append(data);
+	});
+	$(document).ready(function(){
+		$('#click').click(function(){
+			socket.emit('data','abcd');
+		});
+	});
+</script>
+<body>
+	<div id="click">click me</div>
+	<div id="noidung"></div>
+</body>
+</html>
